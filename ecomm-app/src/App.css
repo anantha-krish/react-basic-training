@@ -1,0 +1,22 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.gallery {
+  padding: 100px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+ul {
+  list-style: none;
+}
+
+li.card {
+  border: 2px solid #eee;
+  max-width: 200px;
+  border-radius: 6px;
+}
