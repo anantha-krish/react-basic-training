@@ -17,23 +17,42 @@ function App() {
   }, [])
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path={"/products"} element={<div className="App">
-          <ul className="gallery">
-            {data.map((da, index) => <li key={da.id} className="card">
-              <div className="card__image">
-                <Link to={`${da.id}`}>
-                  <img src={da.image} alt="" width={100} />
-                </Link>
-              </div>
-            </li>)}
-          </ul>
-        </div >} />
-        < Route path={"products/:id"} element={< AppDetails />} />
+    <div className="app">
+      <BrowserRouter>
+        <nav className="nav_bar">
+          <span className="menu">
+            <Link to="/products">Home</Link>
+          </span>
+        </nav>
 
-      </Routes >
-    </BrowserRouter >
+        <Routes>
+          <Route path="/" element={<Navigate to="/products" />} />
+          <Route path={"/products"} element={
+            <div className="App">
+              <ul className="gallery">
+                {data.map((da, index) => (
+                  <Link key={da.id} to={`${da.id}`}>
+                    <li className="card">
+                      <div className="card__image">
+                        <img src={da.image} alt="" width={100} />
+                      </div>
+                      <div className="title">{da.title}</div>
+                      <div className="info">
+                        <span className="price">{da.price} INR</span>
+                        <span className="rating">{da.rating.rate}/5</span>
+                      </div>
+                    </li>
+                  </Link>))}
+              </ul>
+            </div >} />
+          < Route path={"products/:id"} element={< AppDetails />} />
+
+        </Routes >
+        <footer>
+          Designed by © <a href="mailto:anantha_krishnan@outlook.com">Anantha Krishnan </a>. Education purpose only.
+        </footer>
+      </BrowserRouter >
+    </div>
   );
 }
 
